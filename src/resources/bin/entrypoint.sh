@@ -6,7 +6,13 @@ NOW=$(date "+%Y-%m-%d_%H-%M-%S")
 
 # Setup pgdump
 touch /root/.pgpass
-echo "*:*:*:${DB_USERNAME}:${DB_PASSWORD}" > /root/.pgpass
+
+STRING="*:*:*:"
+STRING+=${DB_USERNAME}
+STRING+=":"
+STRING+=${DB_PASSWORD}
+
+echo "${STRING}" > /root/.pgpass
 cat /root/.pgpass
 chmod 600 /root/.pgpass
 
