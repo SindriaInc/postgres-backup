@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+set -e
+
+ls -la
+pwd
+
 NOW=$(date "+%Y-%m-%d_%H-%M-%S")
 
 # Setup pgdump
