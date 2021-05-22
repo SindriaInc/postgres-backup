@@ -6,7 +6,7 @@ bash -c \"echo '*:*:*:${DB_USERNAME}:${DB_PASSWORD}' > /root/.pgpass \"
 chmod 600 /root/.pgpass
 
 # Dump scheme
-pg_dump -U ${DB_USERNAME} -h ${DB_HOST} -p ${DB_PORT} -d ${DB_NAME} -w -f ${APP_NAME}_${NOW_CACHED}.sql
+pg_dump -U ${DB_USERNAME} -h ${DB_HOST} -p ${DB_PORT} -d ${DB_NAME} -w -f ${APP_NAME}_${NOW}.sql
 
 # Init for upload dump
 mkdir -p tmp
