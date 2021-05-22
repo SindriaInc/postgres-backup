@@ -10,9 +10,10 @@ touch /root/.pgpass
 STRING="*:*:*:"
 STRING+=${DB_USERNAME}
 STRING+=":"
-STRING+=${DB_PASSWORD}
+#STRING+=${DB_PASSWORD}
 
 echo "${STRING}" > /root/.pgpass
+echo -n "${DB_PASSWORD}" >> /root/.pgpass
 cat /root/.pgpass
 chmod 600 /root/.pgpass
 
