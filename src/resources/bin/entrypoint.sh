@@ -15,4 +15,4 @@ mkdir -p tmp
 mv *.sql tmp/
 
 # Uploading dump
-AWS_ACCESS_KEY_ID=${SINDRIA_AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${SINDRIA_AWS_SECRET_ACCESS_KEY} aws s3 sync ./tmp s3://${BACKUP_BUCKET_NAME}
+aws s3 sync ./tmp s3://${BACKUP_BUCKET_NAME}
