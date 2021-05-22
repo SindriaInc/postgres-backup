@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+NOW=$(date "+%Y-%m-%d_%H-%M-%S")
+
 # Setup pgdump
 touch /root/.pgpass
 bash -c \"echo '*:*:*:${DB_USERNAME}:${DB_PASSWORD}' > /root/.pgpass \"
