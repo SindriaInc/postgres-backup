@@ -13,7 +13,8 @@ STRING+=":"
 STRING+="@@DB_PASSWORD@@"
 
 echo "${STRING}" > /root/.pgpass
-sed -e 's/@@DB_PASSWORD@@/${DB_PASSWORD}/g' /root/.pgpass
+sed -i -E "s|@@DB_PASSWORD@@|${DB_PASSWORD}|g" /root/.pgpass
+
 cat /root/.pgpass
 chmod 600 /root/.pgpass
 
