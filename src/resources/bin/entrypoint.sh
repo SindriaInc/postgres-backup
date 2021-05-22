@@ -2,14 +2,11 @@
 
 set -e
 
-ls -la
-pwd
-
 NOW=$(date "+%Y-%m-%d_%H-%M-%S")
 
 # Setup pgdump
 touch /root/.pgpass
-bash -c \"echo '*:*:*:${DB_USERNAME}:${DB_PASSWORD}' > /root/.pgpass \"
+echo '*:*:*:${DB_USERNAME}:${DB_PASSWORD}' > /root/.pgpass
 chmod 600 /root/.pgpass
 
 # Dump scheme
