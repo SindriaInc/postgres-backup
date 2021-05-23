@@ -4,6 +4,8 @@ set -e
 
 NOW=$(date "+%Y-%m-%d_%H-%M-%S")
 
+env
+
 # Setup pgdump
 touch /root/.pgpass
 
