@@ -1,4 +1,4 @@
-FROM sindriainc/postgres:2.0.0-12.3
+FROM sindriainc/postgres:3.0.0-12.3
 
 ARG TAG_VERSION
 ARG HOST_USER_UID
