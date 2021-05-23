@@ -5,8 +5,6 @@ set -e
 NOW=$(date "+%Y-%m-%d_%H-%M-%S")
 
 env
-echo "Chi sono?"
-whoami
 
 # Setup pgdump
 touch /root/.pgpass
@@ -14,8 +12,7 @@ touch /root/.pgpass
 STRING="*:*:*:"
 STRING+=${DB_USERNAME}
 STRING+=":"
-#STRING+=${DB_PASSWORD}
-STRING+="@@DB_PASSWORD@@"
+STRING+="##DB_PASSWORD##"
 
 echo "${STRING}" > /root/.pgpass
 
@@ -25,12 +22,12 @@ echo ${DB_PASSWORD} > unclean.txt
 
 cat unclean.txt
 
-#sed -i -e 's/:/\\:/g' unclean.txt
-#cat unclean.txt
+sed -i -e 's/:/\\:/g' unclean.txt
+cat unclean.txt
 
-sed -ie "s/@@DB_PASSWORD@@/$(sed -e 's/:/\\:/g' unclean.txt)/g" /root/.pgpass
+#sed -ie "s/@@DB_PASSWORD@@/$(sed -e 's/:/\\:/g' unclean.txt)/g" /root/.pgpass
 
-#sed -i -e "s/@@DB_PASSWORD@@/$(cat unclean.txt)/g" /root/.pgpass
+sed -i -E "s|##DB_PASSWORD##|$(cat unclean.txt)|g" /root/.pgpass
 
 cat /root/.pgpass
 chmod 600 /root/.pgpass
