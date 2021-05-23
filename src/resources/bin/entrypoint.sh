@@ -25,14 +25,12 @@ echo ${DB_PASSWORD} > unclean.txt
 
 cat unclean.txt
 
-sed -i -e 's/:/\\:/g' unclean.txt
+#sed -i -e 's/:/\\:/g' unclean.txt
+#cat unclean.txt
 
-cat unclean.txt
+sed -ie "s/@@DB_PASSWORD@@/$(sed -e 's/:/\\:/g' unclean.txt)/g" /root/.pgpass
 
-#sed -e "s/@@DB_PASSWORD@@/$(sed -e 's/:/\\:/g' unclean.txt)/g" /root/.pgpass
-
-sed -i -e "s/@@DB_PASSWORD@@/$(cat unclean.txt)/g" /root/.pgpass
-
+#sed -i -e "s/@@DB_PASSWORD@@/$(cat unclean.txt)/g" /root/.pgpass
 
 cat /root/.pgpass
 chmod 600 /root/.pgpass
