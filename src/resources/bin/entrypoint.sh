@@ -29,7 +29,7 @@ sed -e 's/:/\\:/g' unclean.txt
 
 cat unclean.txt
 
-sed -i -E "s|@@DB_PASSWORD@@|$(cat unclean.txt)|g" /root/.pgpass
+sed -e "s/@@DB_PASSWORD@@/$(cat unclean.txt)/g" /root/.pgpass
 
 
 cat /root/.pgpass
