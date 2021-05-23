@@ -14,16 +14,25 @@ touch /root/.pgpass
 STRING="*:*:*:"
 STRING+=${DB_USERNAME}
 STRING+=":"
-STRING+=${DB_PASSWORD}
-#STRING+="@@DB_PASSWORD@@"
+#STRING+=${DB_PASSWORD}
+STRING+="@@DB_PASSWORD@@"
 
 echo "${STRING}" > /root/.pgpass
 
 cat /root/.pgpass
 
-#sed -i -E "s|@@DB_PASSWORD@@|${DB_PASSWORD}|g" /root/.pgpass
-#cat /root/.pgpass
+echo ${DB_PASSWORD} > unclean.txt
 
+cat unclean.txt
+
+sed -e 's/:/\\:/g' unclean.txt
+
+cat unclean.txt
+
+sed -i -E "s|@@DB_PASSWORD@@|$(cat unclean.txt)|g" /root/.pgpass
+
+
+cat /root/.pgpass
 chmod 600 /root/.pgpass
 
 ls -la /root/.pgpass
